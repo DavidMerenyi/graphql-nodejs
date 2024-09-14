@@ -1,6 +1,5 @@
 import { createSchema } from 'graphql-yoga';
 import { typeDef as User, resolvers as userResolvers } from './models/user.js';
-
 import _ from lodash
 
 const queries = /* GraphQL */ `
