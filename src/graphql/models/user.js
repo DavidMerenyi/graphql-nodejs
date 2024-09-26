@@ -25,7 +25,9 @@ export const typeDef = /* GraphQL */ `
     type User {
         id: ID!
         name: String
-        age: Int
+        email: String
+        
+        comments: [Comment]
     }
 `
 
@@ -65,7 +67,10 @@ export const resolvers = {
 
         User: {
             id: ({ _id, id }) => _id || id,
-            name: (obj) => obj.name.trim().toUpperCase()
+            name: (obj) => obj.name.trim().toUpperCase(),
+            comments: async ({ email }, args, { mongo }) => {
+                return mongo.comments.find({ email }).limit(20).toArray()
+            }
         }
     }
 }
