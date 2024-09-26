@@ -68,3 +68,4 @@ export const resolvers = {
             name: (obj) => obj.name.trim().toUpperCase()
         }
     }
+}
